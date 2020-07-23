@@ -152,6 +152,10 @@ private:
 #endif
         Py_SetProgramName(name);
         Py_Initialize();
+        
+        wchar_t* args[1];
+        args[0] = Py_DecodeLocale("", NULL); 
+        PySys_SetArgv(0, args);
 
 #ifndef WITHOUT_NUMPY
         import_numpy(); // initialize numpy C-API
